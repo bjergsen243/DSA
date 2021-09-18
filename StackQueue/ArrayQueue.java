@@ -1,6 +1,6 @@
 package StackQueue;
 
-public class ArrayQueue implements IStackQueue{
+public class ArrayQueue implements IStackQueue {
 
     private int[] array;
     private int SIZE;
@@ -13,11 +13,10 @@ public class ArrayQueue implements IStackQueue{
         headIdx = tailIdx = -1;
     }
 
-
     @Override
     public boolean push(int value) {
-        if (!isFull()){
-            if (isEmpty()){
+        if (!isFull()) {
+            if (isEmpty()) {
                 headIdx++;
             }
             tailIdx++;
@@ -31,7 +30,7 @@ public class ArrayQueue implements IStackQueue{
     public int pop() {
         int value = -1;
         if (!isEmpty()) {
-            value = array[headIdx]; 
+            value = array[headIdx];
             headIdx++;
             if (headIdx > tailIdx) {
                 headIdx = tailIdx = -1;
@@ -42,13 +41,13 @@ public class ArrayQueue implements IStackQueue{
 
     @Override
     public boolean isFull() {
-        
+
         return tailIdx == SIZE - 1;
     }
 
     @Override
     public boolean isEmpty() {
-        
+
         return (headIdx == -1) && (tailIdx == -1);
     }
 
@@ -60,11 +59,11 @@ public class ArrayQueue implements IStackQueue{
             }
             System.out.println();
         } else {
-            System.out.println("Stack is empty");
+            System.out.println("Queue is empty");
         }
-        
+
     }
-    
+
     public int count() {
         if (isEmpty()) {
             return 0;
