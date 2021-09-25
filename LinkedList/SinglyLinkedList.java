@@ -42,7 +42,7 @@ public class SinglyLinkedList {
         }
         size++;
     }
-    public void add(int value, int index){
+    public void addAt(int value, int index){
         if (index == 0){
             addFront(value);
             return;

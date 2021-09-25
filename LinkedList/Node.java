@@ -2,6 +2,7 @@ package LinkedList;
 
 public class Node {
     private Node next;
+    private Node prev;
     private int value;
 
     Node() {
@@ -9,6 +10,8 @@ public class Node {
 
     Node(int value) {
         this.value = value;
+        next = null;
+        prev = null;
     }
 
     public Node getNext() {
@@ -26,5 +29,11 @@ public class Node {
     public void setValue(int value) {
         this.value = value;
     }
-
+    
+    public Node getPrev(){
+        return this.prev;
+    }
+    public void setPrev(Node prev){
+        this.prev = prev;
+    }
 }
