@@ -1,6 +1,3 @@
 package Graph;
 
-public class Main {
-    
-}
-    
+public class Main {}

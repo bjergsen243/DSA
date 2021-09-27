@@ -1,8 +1,13 @@
 package StackQueue;
+
 public interface IStackQueue {
-    public boolean push(int value);
-    public int pop();
-    public boolean isFull();
-    public boolean isEmpty();
-    public void show();
+  boolean push(int value);
+
+  int pop();
+
+  boolean isFull();
+
+  boolean isEmpty();
+
+  void show();
 }
