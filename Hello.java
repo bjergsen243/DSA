@@ -26,89 +26,63 @@ public class Hello {
     return -1;
   }
 
-  private static boolean letterOrDigit(char c) {
-    // boolean check
-    if (Character.isLetterOrDigit(c)) return true;
-    else return false;
+
+  public static long fibo(long n) {
+    if (n < 0) {
+        return -1; 
+    }
+
+    long a1 = 0;
+    long a2 = 1;
+    if (n < 2) {
+        return n;
+    }
+
+    try {
+      long a = 0;
+      long i = 2;
+      
+      while (i <= n) {
+          a = Math.addExact(a1, a2);
+          a1 = a2;
+          a2 = a;
+          i++;
+      }
+      return a;
+    } catch (ArithmeticException e) {
+        return Long.MAX_VALUE;
+    }
   }
-
-  // Operator having higher precedence
-  // value will be returned
-  static int getPrecedence(char ch) {
-
-    if (ch == '+' || ch == '-') return 1;
-    else if (ch == '*' || ch == '/') return 2;
-    else if (ch == '^') return 3;
-    else return -1;
-  }
-
-  static String infixToPostFix(String expression) {
-
-    Stack<Character> stack = new Stack<>();
-
-    String output = new String("");
-
-    for (int i = 0; i < expression.length(); ++i) {
-
-      char c = expression.charAt(i);
-
-      if (letterOrDigit(c)) output += c;
-      else if (c == '(') stack.push(c);
-      else if (c == ')') {
-        while (!stack.isEmpty() && stack.peek() != '(') output += stack.pop();
-
-        stack.pop();
-      } else {
-        while (!stack.isEmpty() && getPrecedence(c) <= getPrecedence(stack.peek())) {
-
-          output += stack.pop();
-        }
-        stack.push(c);
+  public static int maxSubArray(int[] nums) {
+    int curSum = 0;
+    int maxSum = Integer.MIN_VALUE;
+    for (int i = 0; i < nums.length; i++) {
+      curSum += nums[i];
+      if (curSum > maxSum) {
+        maxSum = curSum;
+      }
+      if (curSum < 0) {
+        curSum = 0;
       }
     }
-
-    while (!stack.isEmpty()) {
-      if (stack.peek() == '(') return "This expression is invalid";
-      output += stack.pop();
-    }
-    return output;
+    return maxSum;
   }
+  public static int maxSubArray2(int[] nums){
+    int maxSum = nums[0];
+    int curSum = maxSum;
 
-  public static double postfixEval(String postfix) {
-    Stack<Double> stack = new Stack<>();
-    Scanner scanner = new Scanner(postfix);
-    while (scanner.hasNext()) {
-      if (scanner.hasNextDouble()) stack.push(scanner.nextDouble());
-      else {
-        String input = scanner.next();
-        char op = input.charAt(0);
-        double y = stack.pop();
-        double x = stack.pop();
-        double z = 0;
-        switch (op) {
-          case '+':
-            z = x + y;
-            break;
-          case '-':
-            z = x - y;
-            break;
-          case '*':
-            z = x * y;
-            break;
-          case '/':
-            z = x / y;
-        }
-        stack.push(z);
-      }
+    for (int i = 1; i < nums.length; i++) {
+      curSum = Math.max(nums[i] + curSum, nums[i]);
+      maxSum = Math.max(curSum, maxSum);
     }
-    return stack.pop();
+    return maxSum;
   }
-
   public static void main(String[] args) {
-    String infix = "(80-30)*(40+50/10)";
-    System.out.println("infix = " + infix);
-    String postfix = infixToPostFix(infix);
-    System.out.println("postfix = " + postfix);
-    System.out.println(postfixEval(postfix));
+    Scanner sc = new Scanner(System.in);
+    int[] a = {1,-2,5,10,11,3,-1,1};
+    System.out.println(maxSubArray2(a));
+    System.out.println(maxSubArray(a));
+    sc.close();
+
   }
 }

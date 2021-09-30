@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Main {
   public static void main(String[] args) {
-    String[] arr = {"   Son", "Thanh", "Son", "Nguyen", "Son", "Long"};
+    String[] arr = {"Son", "Thanh", "Son", "Nguyen", "Son", "Long"};
     Map<String, Integer> map = new HashMap<String, Integer>();
     // key la gia tri cua phan tu trong mang
     // value la so lan xuat hien cua phan tu trong mang
