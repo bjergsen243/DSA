@@ -187,4 +187,11 @@ public class MyBST {
   public boolean hasPathSum(TreeNode root, int targetSum) {
     return duyet(root, 0, targetSum);
   }
+
+  // cac canh: ab, ac, bd, be, cf, fj, ei, dg, dh, abd, abe, acf, bdg, bdh, bei, cfj, abdg, abdh, abei, acfj
+  public void lietKeCanh(TreeNode root) {
+      // tuan sau kiem tra
+      // duyet cac canh vao trong cay
+  }
+
 }
