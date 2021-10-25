@@ -1,4 +1,4 @@
-package LeetCodeSolved;
+
 
 public class B283_Move_Zeroes {
   public void moveZeroes(int[] nums) {

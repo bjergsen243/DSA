@@ -1,4 +1,4 @@
-package LeetCodeSolved;
+
 
 public class S1365 {
     public int[] smallerNumbersThanCurrent(int[] nums) {

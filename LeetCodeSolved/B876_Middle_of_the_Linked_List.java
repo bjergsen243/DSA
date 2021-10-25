@@ -1,4 +1,4 @@
-package LeetCodeSolved;
+
 
 public class B876_Middle_of_the_Linked_List {
   public class ListNode {
