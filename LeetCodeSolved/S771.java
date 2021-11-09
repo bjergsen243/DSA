@@ -1,4 +1,4 @@
-class Solution {
+class S771 {
     public int numJewelsInStones(String jewels, String stones) {
         int res = 0;
         for (int i = 0; i < jewels.length(); i++) {

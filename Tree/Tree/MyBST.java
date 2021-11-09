@@ -1,5 +1,7 @@
 package Tree;
 
+import java.util.Scanner;
+
 public class MyBST {
   public TreeNode mRoot;
 
@@ -120,7 +122,7 @@ public class MyBST {
     if (currNode == null) {
       return;
     }
-    System.out.println("Duyet theo Pre-Order");
+    //System.out.println("Duyet theo Pre-Order");
     // Duyet currNode truoc
     System.out.print(currNode.value + " ");
     // Duyet ben trai
@@ -134,7 +136,7 @@ public class MyBST {
     if (currNode == null) {
       return;
     }
-    System.out.println("Duyet theo In-Order");
+    //System.out.println("Duyet theo In-Order");
     // Duyet ben trai
     inOrder(currNode.left);
     System.out.print(currNode.value + " ");
@@ -142,12 +144,12 @@ public class MyBST {
     inOrder(currNode.right);
   }
 
-  // Cach 3: Post-Order
+  // Cach 3: Post-Order -> thuat toan duyet tot nhat
   public static void postOrder(TreeNode currNode) {
     if (currNode == null) {
       return;
     }
-    System.out.println("Duyet theo Post-Order");
+    //System.out.println("Duyet theo Post-Order");
     // Duyet ben trai
     postOrder(currNode.left);
     // Duyet ben phai
@@ -156,7 +158,7 @@ public class MyBST {
   }
 
   // Tim chieu cao cua cay
-  public int maxDepth(TreeNode root) {
+  public static int maxDepth(TreeNode root) {
     // B1: Dk dung`
     if (root == null) {
       return 0;
@@ -189,9 +191,51 @@ public class MyBST {
   }
 
   // cac canh: ab, ac, bd, be, cf, fj, ei, dg, dh, abd, abe, acf, bdg, bdh, bei, cfj, abdg, abdh, abei, acfj
-  public void lietKeCanh(TreeNode root) {
+  // nhập vào n đỉnh của cây, n-1 dòng gồm 2 số x,y với x là 
+  public static boolean add(TreeNode tree, TreeNode node) {
       // tuan sau kiem tra
       // duyet cac canh vao trong cay
+      boolean check = true;
+      if (tree != null) {
+        if (tree.left == null) {
+          add(tree.left, node);
+        } else if (tree.right == null) {
+          add(tree.right, node);
+        } else {
+          check = false;
+        }
+      } else {
+        tree = node;
+      }
+      return check;
   }
-
+  public static boolean addNode(TreeNode tree, int root, int children) {
+    if (tree != null) {
+      if (tree.value == root) {
+        return add(tree, new TreeNode(children));
+      }
+      addNode(tree.left, root, children);
+      addNode(tree.right, root, children);
+    }
+    return true;
+  }
+  public static void main(String[] args) {
+    TreeNode tree = new TreeNode(0);
+    int n;
+    Scanner sc = new Scanner(System.in);
+    n = sc.nextInt();
+    for (int i = 0; i < n - 1; i++) {
+      int root, children;
+      root = sc.nextInt();
+      children = sc.nextInt();
+      boolean check = addNode(tree, root, children);
+      if (!check)
+        {
+            System.out.println("Khong phai cay nhi phan");
+            return;
+        }
+    }
+    System.out.println("La cay nhi phan");
+    sc.close();
+  }
 }
